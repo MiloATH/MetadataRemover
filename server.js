@@ -34,21 +34,28 @@ app.post('/upload', upload.single('file'), function(req, res) {
     if (file) {
         console.log(file.path);
         var exec = require('child_process').exec;
-        var cmd = ' ';// + uploadPath;
+        var cmd = 'exiftool -all= ' + file.path;
         exec(cmd, function(error, stdout, stderr) {
-            if(error) throw error;
+            if (error) throw error;
             console.log(stdout);
+            res.download(file.path);
         });
-
     }
     else {
         res.json({
             error: 'File not readable'
         });
     }
-    res.end('end');
+    //res.end('end');
 });
 
 app.listen(PORT, function() {
-    console.log('Metadata remover app listening on ', PORT);
+    //Make sure exiftool is installed:
+    var exec = require('child_process').exec;
+    var cmd = 'exiftool -ver';
+    exec(cmd, function(error, stdout, stderr) {
+        if (error) throw error;
+        console.log('Exiftool version: ' + stdout);
+        console.log('Metadata remover app listening on ', PORT);
+    });
 });
