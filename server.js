@@ -46,7 +46,6 @@ app.post('/upload', upload.single('file'), function(req, res) {
             error: 'File not readable'
         });
     }
-    //res.end('end');
 });
 
 app.listen(PORT, function() {
