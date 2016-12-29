@@ -67,7 +67,7 @@ app.listen(PORT, function() {
     var cmd = 'exiftool -ver';
     exec(cmd, function(error, stdout, stderr) { //Check exiftool is installed
         if (error) throw error;
-        if (stdout.toString().indexOf('bash: exiftool: command not found') !== -1) {
+        if (stdout.toString().indexOf('not found') !== -1) {
             installExiftool();
         }
         else {
