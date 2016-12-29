@@ -36,11 +36,13 @@ app.get('/', function(req, res) {
 
 //POST image for metadata removal
 app.post('/upload', upload.single('file'), function(req, res) {
+    console.log('POST request to upload');
     var file = req.file;
     if (file) {
         console.log(file.path);
         var exec = require('child_process').exec;
         var cmd = 'exiftool -all= ' + file.path;
+        console.log('About to exec' + cmd)
         exec(cmd, function(error, stdout, stderr) {
             if (error) throw error;
             console.log(stdout);
