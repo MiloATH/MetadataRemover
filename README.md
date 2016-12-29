@@ -1,3 +1,7 @@
 #Metadata Remover
-requires Exiftool:
-For ubuntu: sudo apt-get install libimage-exiftool-perl
+##Requires Exiftool:
+For ubuntu: 
+
+sudo apt-get update
+
+sudo apt-get install libimage-exiftool-perl
