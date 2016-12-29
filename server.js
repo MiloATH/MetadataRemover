@@ -20,9 +20,12 @@ var upload = multer({
     storage: storage
 });
 
+//Static files
+app.use('/static', express.static(path.join(__dirname, 'public')))
+
 //Home
 app.get('/', function(req, res) {
-    var file = path.join(__dirname, 'index.html');
+    var file = path.join(__dirname, 'public/index.html');
     res.sendFile(file, function(err) {
         if (err) {
             console.log(err);
@@ -66,12 +69,16 @@ app.listen(PORT, function() {
     var exec = require('child_process').exec;
     var cmd = 'exiftool -ver';
     exec(cmd, function(error, stdout, stderr) { //Check exiftool is installed
-        if (error) throw error;
-        if (stdout.toString().indexOf('not found') !== -1) {
-            installExiftool();
+        if (error) {
+            if (error.toString().indexOf('not found') !== -1) {
+                installExiftool();
+            }
+            else {
+                throw error;
+            }
         }
         else {
-            var version = stdout.toString().substring(0,stdout.length-1);
+            var version = stdout.toString().substring(0, stdout.length - 1);
             console.log('Exiftool version: ' + version);
         }
         console.log('Metadata remover app listening on ', PORT);

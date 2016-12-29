@@ -9,42 +9,36 @@
     <meta name="author" content="Milo Hartsoe">
     <title></title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/main.css" rel="stylesheet">
 </head>
 
 <body>
-
     <div class="container">
         <div class="header">
             <h3 class="text-muted">Metadata Remover</h3>
         </div>
-
         <div class="jumbotron">
-            <form enctype="multipart/form-data" method="post" action='/upload'>
-                <p>
-                    Please specify a file<br>
-                </p>
-                <input style="margin-bottom:10px" type="file" name="file">
-                <div>
-                    <input class= "btn" type="submit" value="Remove metadata and download">
-                </div>
-            </form>
+            <h1>Remove metadata from files!</h1>
         </div>
-
         <div class="row">
             <div class="col-lg-6">
             </div>
-
-            <div class="col-lg-6">
+            <div class="col-lg-6 file-input">
+                <form enctype="multipart/form-data" method="post" action='/upload'>
+                    <p>
+                        Please specify a file<br>
+                    </p>
+                    <input style="margin-bottom:10px" type="file" name="file">
+                    <div>
+                        <input class="btn" type="submit" value="Remove metadata and download">
+                    </div>
+                </form>
             </div>
         </div>
-
         <footer class="footer">
             <p>Designed and coded by Milo Hartsoe</p>
         </footer>
-
     </div>
-
-
 </body>
 
 </html>
